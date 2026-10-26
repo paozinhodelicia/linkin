@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pãozinho Delícya | Link na Bio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #faf5f8; /* Soft background to contrast with the link-in-bio container */
+            margin: 0;
+            padding: 0;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #F2A2D0;
+            border-radius: 10px;
+        }
+        
+        /* Modal animation classes */
+        .modal-enter {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        .modal-enter-active {
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 300ms, transform 300ms;
+        }
+        .modal-exit {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .modal-exit-active {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 300ms, transform 300ms;
+        }
+    </style>
+</head>
+<body class="flex justify-center min-h-screen antialiased text-gray-800">
+
+    <!-- Main Container (Mobile First / Link-in-bio style) -->
+    <main class="w-full max-w-md bg-white min-h-screen shadow-2xl relative flex flex-col items-center pb-12 overflow-x-hidden">
+        
+        <!-- Header Background Decoration -->
+        <div class="w-full h-32 bg-gradient-to-b from-[#F0BFE3] to-white absolute top-0 left-0 z-0 rounded-b-[40px]"></div>
+
+        <!-- Profile Section -->
+        <header class="relative z-10 flex flex-col items-center pt-12 px-6 text-center">
+            <!-- Profile Image -->
+            <div class="p-1 bg-white rounded-full shadow-lg">
+                <img src="WhatsApp Image 2026-10-26 at 18.51.37.jpeg" alt="Pãozinho Delícya" 
+                     class="w-28 h-28 rounded-full border-4 border-[#C471F0] object-cover"
+                     onerror="this.src='https://placehold.co/400x400/F0BFE3/8968EF?text=Logo'">
+            </div>
+            
+            <h1 class="mt-4 text-2xl font-bold text-[#8968EF] tracking-tight">Pãozinho Delícya</h1>
+            <p class="text-sm mt-2 text-gray-600 font-medium">Pães artesanais macios, quentinhos e feitos com muito amor para alegrar o seu dia! 🥖💖</p>
+        </header>
+
+        <!-- Social Icons -->
+        <div class="flex gap-4 mt-5 relative z-10">
+            <!-- Instagram Icon -->
+            <a href="https://www.instagram.com/claudiadcome/" class="w-10 h-10 rounded-full bg-[#F2A2D0] text-white flex items-center justify-center shadow-md hover:bg-[#8968EF] transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+            <!-- WhatsApp Icon -->
+            
+
+        <!-- Action Buttons -->
+        <div class="w-full px-6 mt-8 flex flex-col gap-3 relative z-10">
+           
+            <a href="#" class="w-full py-3.5 rounded-full text-white font-bold text-center bg-[#F7A9A8] hover:bg-[#F2A2D0] transition-all duration-300 shadow-[0_4px_14px_0_rgba(247,169,168,0.39)] hover:shadow-[0_6px_20px_rgba(242,162,208,0.23)] hover:-translate-y-0.5">
+                Chama no WhatsApp 💬
+            </a>
+        </div>
+
+        <!-- Menu Section (Replaces the photo feed) -->
+        <div class="w-full mt-10 px-4">
+            <!-- Tabs style header -->
+            <div class="flex border-b-2 border-[#F0BFE3] mb-5">
+                <div class="w-full text-center pb-2 border-b-4 border-[#8968EF] font-bold text-[#8968EF]">
+                    NOSSO CARDÁPIO
+                </div>
+            </div>
+
+            <!-- CSS Grid for Menu Items -->
+            <!-- We will populate this via JavaScript -->
+            <div id="menu-grid" class="grid grid-cols-2 gap-3 sm:gap-4 pb-4">
+                <!-- Cards will be injected here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal/Pop-up Overlay -->
+    <div id="item-modal" class="fixed inset-0 z-50 hidden items-center justify-center px-4" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Backdrop -->
+        <div id="modal-backdrop" class="fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
+
+        <!-- Modal Content Panel -->
+        <div id="modal-panel" class="relative bg-white rounded-2xl w-full max-w-sm overflow-hidden shadow-2xl z-10 flex flex-col transform transition-all modal-enter">
+            
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-3 right-3 z-20 bg-white/80 backdrop-blur-sm rounded-full p-2 text-gray-800 shadow-md hover:bg-white hover:text-[#C471F0] transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <!-- Image Area -->
+            <div class="relative h-56 bg-[#F0BFE3]">
+                <img id="modal-image" src="" alt="Imagem do Pão" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Content Area -->
+            <div class="p-6">
+                <h3 id="modal-title" class="text-xl font-bold text-[#8968EF] mb-2 leading-tight">Nome do Pão</h3>
+                <p id="modal-desc" class="text-sm text-gray-600 mb-2 leading-relaxed">
+                    Descrição detalhada dos ingredientes e do sabor maravilhoso desse pãozinho.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // Data for the menu items
+        const menuItems = [
+            {
+                id: 1,
+                name: "Pão Caseiro Tradicional",
+                shortDesc: "O clássico fofinho.",
+                fullDesc: "Nosso clássico pãozinho caseiro, extremamente macio e fofinho, perfeito para o café da manhã ou da tarde. Feito com ingredientes selecionados e muito carinho.",
+                imgSrc: "https://placehold.co/400x400/F0BFE3/8968EF?text=Pão+Tradicional"
+            },
+            {
+                id: 2,
+                name: "Pão de Calabresa",
+                shortDesc: "Explosão de sabor.",
+                fullDesc: "Delicioso pão artesanal recheado com pedaços generosos de calabresa defumada, queijo e um toque de orégano. Uma verdadeira explosão de sabor a cada mordida!",
+                imgSrc: "https://placehold.co/400x400/F2A2D0/ffffff?text=Calabresa"
+            },
+            {
+                id: 3,
+                name: "Pão Doce com Creme",
+                shortDesc: "Docinho e macio.",
+                fullDesc: "Pão doce super macio, recheado com o nosso creme especial de baunilha e finalizado com uma calda de açúcar delicada. O lanche perfeito para quem ama um doce.",
+                imgSrc: "https://placehold.co/400x400/C471F0/ffffff?text=Creme"
+            },
+            {
+                id: 4,
+                name: "Pão Integral Nutritivo",
+                shortDesc: "Saudável e gostoso.",
+                fullDesc: "Para quem busca uma opção mais saudável, nosso pão integral é rico em fibras, sementes de girassol e linhaça, sem perder a maciez que é a nossa marca registrada.",
+                imgSrc: "https://placehold.co/400x400/F7A9A8/ffffff?text=Integral"
+            },
+            {
+                id: 5,
+                name: "Pãozinho de Queijo",
+                shortDesc: "O queridinho.",
+                fullDesc: "Feito com blend de queijos curados, crosta crocante por fora e aquele puxa-puxa irresistível por dentro. Não dá pra comer um só!",
+                imgSrc: "https://placehold.co/400x400/8968EF/ffffff?text=Queijo"
+            },
+            {
+                id: 6,
+                name: "Rosca de Leite Condensado",
+                shortDesc: "Derrete na boca.",
+                fullDesc: "Massa super leve trançada, banhada em leite condensado e salpicada com coco ralado fresco. Derrete na boca!",
+                imgSrc: "https://placehold.co/400x400/F0BFE3/8968EF?text=Rosca+Doce"
+            }
+        ];
+
+        const menuGrid = document.getElementById('menu-grid');
+        const modal = document.getElementById('item-modal');
+        const modalPanel = document.getElementById('modal-panel');
+        const modalImage = document.getElementById('modal-image');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+
+        // Function to render the menu items
+        function renderMenu() {
+            menuGrid.innerHTML = '';
+            menuItems.forEach(item => {
+                // Create card HTML
+                const cardHTML = `
+                    <div onclick="openModal(${item.id})" class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer hover:shadow-md transition-shadow group flex flex-col h-full">
+                        <div class="relative pt-[100%] bg-[#f8f8f8] overflow-hidden">
+                            <img src="${item.imgSrc}" alt="${item.name}" class="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-3 flex-grow flex flex-col justify-between">
+                            <h3 class="text-sm font-semibold text-[#8968EF] leading-tight mb-1">${item.name}</h3>
+                            <p class="text-xs text-gray-500">${item.shortDesc}</p>
+                        </div>
+                    </div>
+                `;
+                menuGrid.innerHTML += cardHTML;
+            });
+        }
+
+        // Open Modal Function
+        function openModal(id) {
+            const item = menuItems.find(i => i.id === id);
+            if (!item) return;
+
+            // Populate data
+            modalImage.src = item.imgSrc;
+            modalTitle.innerText = item.name;
+            modalDesc.innerText = item.fullDesc;
+
+            // Show modal with animation
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Trigger reflow for animation
+            void modalPanel.offsetWidth;
+            
+            modalPanel.classList.remove('modal-exit', 'modal-exit-active');
+            modalPanel.classList.add('modal-enter-active');
+            
+            setTimeout(() => {
+                modalPanel.classList.remove('modal-enter-active', 'modal-enter');
+            }, 300);
+
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Modal Function
+        function closeModal() {
+            modalPanel.classList.add('modal-exit-active');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                modalPanel.classList.remove('modal-exit-active', 'modal-exit');
+                // Restore body scroll
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        // Close modal when clicking on the backdrop
+        document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMenu();
+        });
+    </script>
+</body>
+</html>
