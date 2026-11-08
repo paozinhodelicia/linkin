@@ -93,21 +93,38 @@
 
         <div id="modal-panel" class="relative bg-white rounded-2xl w-full max-w-sm overflow-hidden shadow-2xl z-10 flex flex-col transform transition-all modal-enter">
             
-            <button onclick="closeModal()" class="absolute top-3 right-3 z-20 bg-white/80 backdrop-blur-sm rounded-full p-2 text-gray-800 shadow-md hover:bg-white hover:text-[#C471F0] transition-colors">
+            <button onclick="closeModal()" class="absolute top-3 right-3 z-30 bg-white/80 backdrop-blur-sm rounded-full p-2 text-gray-800 shadow-md hover:bg-white hover:text-[#C471F0] transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
 
-            <div class="relative bg-[#F0BFE3] flex justify-center items-center">
-                <img id="modal-image" src="" alt="Imagem do Pão" class="w-full h-auto max-h-72 object-contain">
+            <div class="relative bg-[#F0BFE3] flex justify-center items-center min-h-[16rem]">
+                <!-- Seta Esquerda -->
+                <button id="prev-btn" onclick="prevImage(event)" class="absolute left-2 z-20 bg-white/70 hover:bg-white rounded-full p-1.5 text-[#8968EF] shadow-md hidden transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+
+                <img id="modal-image" src="" alt="Imagem do Pão" class="w-full h-auto max-h-72 object-contain transition-opacity duration-300">
+                
+                <!-- Seta Direita -->
+                <button id="next-btn" onclick="nextImage(event)" class="absolute right-2 z-20 bg-white/70 hover:bg-white rounded-full p-1.5 text-[#8968EF] shadow-md hidden transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+
+                <!-- Bolinhas indicadoras -->
+                <div id="image-indicators" class="absolute bottom-3 flex gap-1.5 z-20"></div>
             </div>
 
             <div class="p-6">
                 <h3 id="modal-title" class="text-xl font-bold text-[#8968EF] mb-1 leading-tight">Nome do Pão</h3>
                 <p id="modal-price" class="text-lg font-bold text-[#F7A9A8] mb-3">R$ 0,00</p>
                 <p id="modal-desc" class="text-sm text-gray-600 mb-2 leading-relaxed">
-                    Descrição detalhada dos ingredientes e do sabor maravilhoso desse pãozinho.
+                    Descrição detalhada.
                 </p>
             </div>
         </div>
@@ -120,24 +137,45 @@
                 name: "Pão Caseiro Tradicional",
                 shortDesc: "O clássico fofinho.",
                 fullDesc: "Nosso clássico pãozinho caseiro, extremamente macio e fofinho, perfeito para o café da manhã ou da tarde. Feito com ingredientes selecionados e muito carinho.",
-                imgSrc: "img/paonormalpct.jpeg",
-                price: "R$ 14,00"
+                images: ["img/paonormalpct.jpeg"], 
+                price: "R$ 14,00",
+                isNew: 0 // 0 = sem destaque de novidade
             },
             {
                 id: 2,
                 name: "Pão de Torresmo",
                 shortDesc: "Crocante e saboroso.",
                 fullDesc: "Delicioso pão artesanal com pedaços de torresmo incorporados na massa, trazendo um sabor rústico e irresistível a cada mordida. Perfeito para acompanhar um café!",
-                imgSrc: "img/paesdetorresmo.jpeg",
-                price: "R$ 25,00"
+                images: ["img/paesdetorresmo.jpeg"],
+                price: "R$ 25,00",
+                isNew: 0
             },
             {
                 id: 3,
                 name: "Pão de Coco",
                 shortDesc: "Docinho e macio com coco.",
                 fullDesc: "Pão doce super macio, recheado e coberto com coco ralado fresquinho e uma deliciosa calda docinha. O lanche perfeito para quem ama um toque tropical e doce.",
-                imgSrc: "img/paococospct.jpeg",
-                price: "R$ 25,00"
+                images: ["img/paococospct.jpeg"],
+                price: "R$ 25,00",
+                isNew: 0
+            },
+            {
+                id: 4,
+                name: "Cuca de Creme de Avelã",
+                shortDesc: "Recheada com creme de avelã e gotas de chocolate.",
+                fullDesc: "Deliciosa cuca artesanal de massa macia, recheada com generoso creme de avelã e gotas de chocolate, coberta com a tradicional farofa crocante.",
+                images: ["img/cucacremeavela.jpeg", "img/cucacremeavelaab.jpeg"], 
+                price: "R$ 20,00",
+                isNew: 1 // 1 = Com destaque de novidade
+            },
+            {
+                id: 5,
+                name: "Cuca de Goiabada",
+                shortDesc: "Saborosa e recheada com goiabada.",
+                fullDesc: "Irresistível cuca caseira recheada com goiabada cremosa e finalizada com uma crocante farofa doce. A combinação perfeita para o seu café.",
+                images: ["img/cucagoisbada.jpeg", "img/cucagoiabadaab.jpeg"], 
+                price: "R$ 18,00",
+                isNew: 1 // 1 = Com destaque de novidade
             }
         ];
 
@@ -148,14 +186,27 @@
         const modalTitle = document.getElementById('modal-title');
         const modalPrice = document.getElementById('modal-price');
         const modalDesc = document.getElementById('modal-desc');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const indicators = document.getElementById('image-indicators');
+
+        let currentItem = null;
+        let currentImgIndex = 0;
 
         function renderMenu() {
             menuGrid.innerHTML = '';
             menuItems.forEach(item => {
+                
+                // Gera a tag de novidade se isNew for 1
+                const newBadgeHTML = item.isNew === 1 
+                    ? `<div class="absolute top-2 left-2 z-10 bg-[#C471F0] text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm tracking-wide">NOVIDADE ✨</div>` 
+                    : '';
+
                 const cardHTML = `
-                    <div onclick="openModal(${item.id})" class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer hover:shadow-md transition-shadow group flex flex-col h-full">
+                    <div onclick="openModal(${item.id})" class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer hover:shadow-md transition-shadow group flex flex-col h-full relative">
                         <div class="relative pt-[100%] bg-[#f8f8f8] overflow-hidden">
-                            <img src="${item.imgSrc}" alt="${item.name}" class="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            ${newBadgeHTML}
+                            <img src="${item.images[0]}" alt="${item.name}" class="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-3 flex-grow flex flex-col justify-between">
                             <div>
@@ -170,19 +221,60 @@
             });
         }
 
-        function openModal(id) {
-            const item = menuItems.find(i => i.id === id);
-            if (!item) return;
+        function updateModalImage() {
+            modalImage.src = currentItem.images[currentImgIndex];
+            
+            // Controle de exibição das setas
+            if (currentItem.images.length > 1) {
+                prevBtn.classList.remove('hidden');
+                nextBtn.classList.remove('hidden');
+                
+                // Atualizar bolinhas indicadoras
+                indicators.innerHTML = currentItem.images.map((_, i) => 
+                    `<div class="w-2 h-2 rounded-full transition-colors ${i === currentImgIndex ? 'bg-[#8968EF] scale-110' : 'bg-white/60'}"></div>`
+                ).join('');
+            } else {
+                prevBtn.classList.add('hidden');
+                nextBtn.classList.add('hidden');
+                indicators.innerHTML = '';
+            }
+        }
 
-            modalImage.src = item.imgSrc;
-            modalTitle.innerText = item.name;
-            modalPrice.innerText = item.price;
-            modalDesc.innerText = item.fullDesc;
+        function prevImage(e) {
+            e.stopPropagation(); 
+            if(currentImgIndex > 0) {
+                currentImgIndex--;
+            } else {
+                currentImgIndex = currentItem.images.length - 1; 
+            }
+            updateModalImage();
+        }
+
+        function nextImage(e) {
+            e.stopPropagation();
+            if(currentImgIndex < currentItem.images.length - 1) {
+                currentImgIndex++;
+            } else {
+                currentImgIndex = 0; 
+            }
+            updateModalImage();
+        }
+
+        function openModal(id) {
+            currentItem = menuItems.find(i => i.id === id);
+            if (!currentItem) return;
+
+            currentImgIndex = 0; 
+            updateModalImage();
+
+            modalTitle.innerText = currentItem.name;
+            modalPrice.innerText = currentItem.price;
+            modalDesc.innerText = currentItem.fullDesc;
 
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             
-            void modalPanel.offsetWidth;
+            void modalPanel.offsetWidth; 
             
             modalPanel.classList.remove('modal-exit', 'modal-exit-active');
             modalPanel.classList.add('modal-enter-active');
