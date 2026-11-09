@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pãozinho Delícya | Link na Bio</title>
+    <title>Clau | Link na Bio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="img/logodelicia.png" type="image/png">
+    <link rel="icon" href="img/logonovasite.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -53,12 +53,12 @@
 
         <header class="relative z-10 flex flex-col items-center pt-12 px-6 text-center">
             <div class="p-1 bg-white rounded-full shadow-lg">
-                <img src="img/logodelicia.png" alt="Pãozinho Delícya" 
+                <img src="img/logonovasite.png" alt="Clau Produtos Artesanais" 
                      class="w-28 h-28 rounded-full border-4 border-[#C471F0] object-cover"
                      onerror="this.src='https://placehold.co/400x400/F0BFE3/8968EF?text=Logo'">
             </div>
             
-            <h1 class="mt-4 text-2xl font-bold text-[#8968EF] tracking-tight">Pãozinho Delícya</h1>
+            <h1 class="mt-4 text-2xl font-bold text-[#8968EF] tracking-tight">Clau</h1>
             <p class="text-sm mt-2 text-gray-600 font-medium">Pães artesanais macios, quentinhos e feitos com muito amor para alegrar o seu dia! 🥖💖</p>
         </header>
 
@@ -76,7 +76,23 @@
             </a>
         </div>
 
-        <div class="w-full mt-10 px-4">
+        <!-- NOVO: Card de Entregas -->
+        <div class="w-full px-6 mt-4 relative z-10">
+            <div class="bg-white border-2 border-[#F0BFE3] rounded-2xl p-3.5 flex items-center gap-4 shadow-[0_4px_10px_rgba(137,104,239,0.08)]">
+                <div class="bg-[#8968EF] text-white p-2.5 rounded-full flex-shrink-0 shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-[15px] font-bold text-[#8968EF] leading-tight">Fazemos entregas!</h3>
+                    <p class="text-[13px] text-gray-600 font-medium mt-0.5">Levamos até você em <strong class="text-[#F7A9A8]">Regente Feijó</strong> 🛵</p>
+                </div>
+            </div>
+        </div>
+        <!-- FIM DO CARD -->
+
+        <div class="w-full mt-8 px-4">
             <div class="flex border-b-2 border-[#F0BFE3] mb-5">
                 <div class="w-full text-center pb-2 border-b-4 border-[#8968EF] font-bold text-[#8968EF]">
                     NOSSO CARDÁPIO
@@ -140,7 +156,7 @@
                 fullDesc: "Nosso clássico pãozinho caseiro, extremamente macio e fofinho, perfeito para o café da manhã ou da tarde. Feito com ingredientes selecionados e muito carinho.",
                 images: ["img/paonormalpct.jpeg"], 
                 price: "R$ 14,00",
-                isNew: 0 // 0 = sem destaque de novidade
+                isNew: 0 
             },
             {
                 id: 2,
@@ -167,7 +183,7 @@
                 fullDesc: "Deliciosa cuca artesanal de massa macia, recheada com generoso creme de avelã e gotas de chocolate, coberta com a tradicional farofa crocante.",
                 images: ["img/cucacremeavela.jpeg", "img/cucacremeavelaab.jpeg"], 
                 price: "R$ 20,00",
-                isNew: 1 // 1 = Com destaque de novidade
+                isNew: 1
             },
             {
                 id: 5,
@@ -176,7 +192,7 @@
                 fullDesc: "Irresistível cuca caseira recheada com goiabada cremosa e finalizada com uma crocante farofa doce. A combinação perfeita para o seu café.",
                 images: ["img/cucagoisbada.jpeg", "img/cucagoiabadaab.jpeg"], 
                 price: "R$ 18,00",
-                isNew: 1 // 1 = Com destaque de novidade
+                isNew: 1
             }
         ];
 
@@ -198,7 +214,6 @@
             menuGrid.innerHTML = '';
             menuItems.forEach(item => {
                 
-                // Gera a tag de novidade se isNew for 1
                 const newBadgeHTML = item.isNew === 1 
                     ? `<div class="absolute top-2 left-2 z-10 bg-[#C471F0] text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm tracking-wide">NOVIDADE ✨</div>` 
                     : '';
@@ -225,12 +240,10 @@
         function updateModalImage() {
             modalImage.src = currentItem.images[currentImgIndex];
             
-            // Controle de exibição das setas
             if (currentItem.images.length > 1) {
                 prevBtn.classList.remove('hidden');
                 nextBtn.classList.remove('hidden');
                 
-                // Atualizar bolinhas indicadoras
                 indicators.innerHTML = currentItem.images.map((_, i) => 
                     `<div class="w-2 h-2 rounded-full transition-colors ${i === currentImgIndex ? 'bg-[#8968EF] scale-110' : 'bg-white/60'}"></div>`
                 ).join('');
